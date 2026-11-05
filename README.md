@@ -1,6 +1,13 @@
-# Forkable Auto Penetration Test Agent FAPTA
+# FAPTA
 
 ### Forkable-Auto-Penetration-Test-Agent — a general-purpose state-space search engine
+
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Python](https://img.shields.io/badge/python-3.12%2B-blue.svg)
+![Tests](https://img.shields.io/badge/tests-23%20passing-brightgreen.svg)
+![Built with FastAPI](https://img.shields.io/badge/built%20with-FastAPI-009688.svg)
+![Store: SQLite](https://img.shields.io/badge/store-SQLite-003B57.svg)
+![Status](https://img.shields.io/badge/status-alpha-orange.svg)
 
 FAPTA is a **general-purpose problem-solving engine**. It defines no fixed roles and
 no fixed workflow. You give it an **origin** (where you are) and a **goal** (what
@@ -463,6 +470,19 @@ For a vendor CLI, use the `cli` worker type and give it an argv — no code need
 something richer, subclass `Worker` and implement `run(task) -> WorkerResult`.
 
 ---
+
+## About
+
+Built and maintained by **Anti-Errorist** — [github.com/suryakulshreshtha](https://github.com/suryakulshreshtha) · [suryakulshreshtha.github.io](https://suryakulshreshtha.github.io)
+
+Background in software development and quality engineering — QA, SDET, and product
+ownership, with a focus on test automation and developer tooling. FAPTA came out of a
+simple idea: that a lot of hard, open-ended problems — security testing, CTFs, search,
+proof — are really the same problem wearing different clothes. Give a system an origin
+and a goal, and let it find the path.
+
+Issues and pull requests are welcome. If you fork it and build something, I'd like to
+hear about it.
 
 ## License
 
