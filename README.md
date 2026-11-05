@@ -1,4 +1,4 @@
-# FAPTA
+# Forkable Auto Penetration Test Agent FAPTA
 
 ### Forkable-Auto-Penetration-Test-Agent — a general-purpose state-space search engine
 
