@@ -1,0 +1,37 @@
+# FAPTA dispatcher configuration - fully local, offline-friendly example.
+#
+# Workers run directly on the dispatcher host and reuse each CLI's own host login.
+# No API keys, base URLs or models are configured here. This is also the starting
+# point for the future air-gapped build: point the worker at a locally hosted model
+# CLI and nothing else changes.
+#
+#   cp dispatch.local.example.yaml dispatch.yaml
+#   fapta serve                       # in one shell (observation + hints)
+#   fapta dispatch --config dispatch.yaml   # in another (the search)
+
+runtime:
+  execution: local
+  worker_max_running: 2
+  interval: 1.0
+  max_iterations: 100
+
+local:
+  workspace_root: "."
+  completed_action: keep
+
+db_path: "fapta.db"
+
+workers:
+  # The mock worker needs nothing installed and proves the loop offline.
+  - name: "mock"
+    type: "mock"
+    task_types: [bootstrap, reason, explore]
+    max_running: 2
+    priority: 0
+
+  # Swap in a real local backend once its CLI is installed and logged in:
+  # - name: "local-claude"
+  #   type: "claudecode"
+  #   task_types: [bootstrap, reason, explore]
+  #   max_running: 1
+  #   priority: 0

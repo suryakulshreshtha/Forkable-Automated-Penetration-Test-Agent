@@ -1,0 +1,41 @@
+# FAPTA dispatcher configuration - networked / multi-backend example.
+#
+# This file is the static default tier. Copy it to dispatch.yaml and edit.
+#   cp dispatch.example.yaml dispatch.yaml
+#
+# No secrets belong in source control. Each CLI backend uses its own host login,
+# so local mode needs no keys here at all.
+
+runtime:
+  execution: local          # 'local' runs workers as host subprocesses (no Docker).
+  worker_max_running: 2     # global cap on concurrent explore tasks per cycle.
+  interval: 1.0             # seconds between dispatcher cycles.
+  max_iterations: 100       # safety cap on cycles per project.
+
+local:
+  workspace_root: "."       # each project gets an isolated working dir under here.
+  completed_action: keep    # keep | remove
+
+db_path: "fapta.db"
+
+# Workers are swappable executors. Both shipped CLI backends are US-vendor tools.
+# 'task_types' restricts which kinds of work a worker will accept; omit to accept all.
+workers:
+  - name: "claude-primary"
+    type: "claudecode"      # Anthropic Claude Code CLI (headless).
+    task_types: [bootstrap, reason, explore]
+    max_running: 1
+    priority: 0
+    timeout: 600
+
+  # - name: "codex-explorer"
+  #   type: "codex"          # OpenAI Codex CLI (codex exec).
+  #   task_types: [explore]
+  #   max_running: 2
+  #   priority: 1
+
+  # - name: "custom"
+  #   type: "cli"            # Escape hatch for any other local agent CLI.
+  #   command: ["my-agent", "--print", "{prompt}"]   # {prompt} is substituted;
+  #   task_types: [explore]                          # omit {prompt} to use stdin.
+  #   max_running: 1

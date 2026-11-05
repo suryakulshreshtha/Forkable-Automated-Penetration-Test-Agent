@@ -1,0 +1,17 @@
+# A neutral example "mission" - the shape every project takes.
+#
+# A mission is just an origin and a goal. The engine searches for a path between
+# them. Here the state space is a hidden maze and the MockWorker plays the
+# environment; swap the worker for a real backend and the same two lines describe
+# any other authorised search problem.
+
+origin: "START"
+goal: "GOAL"
+
+# To run this mission offline:
+#   fapta demo
+#
+# or, against a persistent store:
+#   fapta new --origin START --goal GOAL --db fapta.db
+#   fapta dispatch --config dispatch.local.example.yaml
+#   fapta graph <project_id> --db fapta.db

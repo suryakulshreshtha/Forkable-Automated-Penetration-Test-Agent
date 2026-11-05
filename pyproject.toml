@@ -1,0 +1,32 @@
+[project]
+name = "fapta"
+version = "0.1.0"
+description = "Forkable-Auto-Penetration-Test-Agent: a general-purpose state-space search engine."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+dependencies = [
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "click>=8.1",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+]
+
+[project.optional-dependencies]
+# Only needed if a worker must drive a real browser. Not required by the engine.
+browser = ["playwright>=1.44"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+fapta = "fapta.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["fapta"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

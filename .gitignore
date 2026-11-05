@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# --- Secrets & local config (NEVER commit) ---
+# gitignore does not support inline comments, so keep each pattern on its own line.
+# Local dispatcher config may hold endpoints / API keys. The *.example.yaml files
+# are safe to commit; the live dispatch.yaml is not.
+dispatch.yaml
+dispatch.local.yaml
+dispatch.*.yaml
+!dispatch.example.yaml
+!dispatch.local.example.yaml
+
+# Environment files and generic secret stores
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+secrets.yaml
+secrets.yml
+creds.json
+credentials.json
+config.local.yaml
+*.local.yaml
+
+# FAPTA runtime state
+*.db
+*.db-wal
+*.db-shm
+datas/
+sessions/
+workspace/
+
+# tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
