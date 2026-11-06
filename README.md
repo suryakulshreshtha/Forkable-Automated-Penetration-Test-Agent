@@ -1,5 +1,7 @@
 # FAPTA
 
+![FAPTA — Forkable-Automated-Penetration-Test-Agent](docs/card.png)
+
 ### Forkable-Auto-Penetration-Test-Agent — a general-purpose state-space search engine
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
